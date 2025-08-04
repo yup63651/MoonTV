@@ -98,22 +98,22 @@ async function verifySignature(
 }
 
 // 处理认证失败的情况
-function handleAuthFailure(
-  request: NextRequest,
-  pathname: string
-): NextResponse {
+//function handleAuthFailure(
+//  request: NextRequest,
+//  pathname: string
+//): NextResponse {
   // 如果是 API 路由，返回 401 状态码
-  if (pathname.startsWith('/api')) {
-    return new NextResponse('Unauthorized', { status: 401 });
-  }
+//  if (pathname.startsWith('/api')) {
+//    return new NextResponse('Unauthorized', { status: 401 });
+//  }
 
   // 否则重定向到登录页面
-  const loginUrl = new URL('/login', request.url);
+//  const loginUrl = new URL('/login', request.url);
   // 保留完整的URL，包括查询参数
-  const fullUrl = `${pathname}${request.nextUrl.search}`;
-  loginUrl.searchParams.set('redirect', fullUrl);
-  return NextResponse.redirect(loginUrl);
-}
+//  const fullUrl = `${pathname}${request.nextUrl.search}`;
+//  loginUrl.searchParams.set('redirect', fullUrl);
+//  return NextResponse.redirect(loginUrl);
+//}
 
 // 判断是否需要跳过认证的路径
 function shouldSkipAuth(pathname: string): boolean {
@@ -124,6 +124,7 @@ function shouldSkipAuth(pathname: string): boolean {
     '/manifest.json',
     '/icons/',
     '/logo.png',
+    '/',
     '/screenshot.png',
   ];
 
